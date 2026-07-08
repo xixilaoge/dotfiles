@@ -5,7 +5,7 @@
   nix.enable = false;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = "aarch64-darwin"; # use x86_64-darwin for Intel CPU
+  nixpkgs.hostPlatform = "x86_64-darwin"; # use x86_64-darwin for Intel CPU
 
   system.primaryUser = user;
   users.users.${user} = {
@@ -28,6 +28,9 @@
   nix-homebrew = {
     enable = true;
     inherit user;
+
+    # Automatically migrate existing Homebrew installations
+    autoMigrate = true;
   };
   homebrew = {
     enable = true;
@@ -36,10 +39,20 @@
     onActivation.extraFlags = [ "--force" ];
     brews = [
       "herdr"
+      "gh"
+      "node"
+      "uv"
+      "git-lfs"
     ];
     casks = [
       "wezterm"
       "claude-code"
+      "codex"
+      "iterm2"
+      "miniconda"
+      "sublime-text"
+      "github"
+      "font-hack-nerd-font"
     ];
   };
 }
