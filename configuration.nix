@@ -5,7 +5,7 @@
   nix.enable = false;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = "x86_64-darwin"; # use x86_64-darwin for Intel CPU
+  nixpkgs.hostPlatform = "aarch64-darwin"; # use x86_64-darwin for Intel CPU
 
   system.primaryUser = user;
   users.users.${user} = {
@@ -53,6 +53,8 @@
       "sublime-text"
       "github"
       "font-hack-nerd-font"
+      "git"
+      "neovim"
     ];
   };
 }
